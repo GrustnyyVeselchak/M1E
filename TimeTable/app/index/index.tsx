@@ -8,7 +8,24 @@ export default function Index() {
   const [filteredData, setFilteredData] = useState([]);
   const rooms = ["420", "421", "425", "431"]; // Аудитории
 
+  const today = new Date();
+  const startOfWeek = new Date(today);
+  const endOfWeek = new Date(today);
+
+  startOfWeek.setDate(today.getDate() - today.getDay() + 1);
+  /* console.log(startOfWeek) */
+  endOfWeek.setDate(today.getDate() - today.getDay() + 5);
+  /* console.log(endOfWeek) */
+  console.log(process.env.BASE_URL)
   useEffect(() => {
+    axios
+      .get(`${process.env.BASE_URL}${encodeURIComponent(420 + "тп/Гл")}`)
+      .then((response) => {
+        console.log(response.data)
+      })
+  })
+
+  /* useEffect(() => {
     const fetchData = async () => {
       try {
         // Получаем данные для всех аудиторий
@@ -35,12 +52,6 @@ export default function Index() {
 
   // Фильтрация на текущую неделю
   const filterThisWeek = (allData) => {
-    const today = new Date();
-    const startOfWeek = new Date(today);
-    startOfWeek.setDate(today.getDate() - today.getDay() + 1); // Начало недели (понедельник)
-    const endOfWeek = new Date(startOfWeek);
-    endOfWeek.setDate(startOfWeek.getDate() + 6); // Конец недели (воскресенье)
-
     const filtered = allData.map(({ room, events }) => ({
       room,
       events: events.filter((item) => {
@@ -64,12 +75,12 @@ export default function Index() {
     }));
 
     setFilteredData(filtered);
-  };
+  }; */
 
   return (
     <View style={styles.container}>
-      {/* Кнопки для фильтрации */}
-      <View style={{ flexDirection: "row", marginVertical: 10 }}>
+      <Text>Расписание занятий в технопарке</Text>
+      {/* <View style={{ flexDirection: "row", marginVertical: 10 }}>
         <Button title="Сегодня" onPress={filterToday} />
         <Button title="На неделю" onPress={() => filterThisWeek(data)} />
       </View>
@@ -96,7 +107,7 @@ export default function Index() {
             )}
           </View>
         ))}
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 }
