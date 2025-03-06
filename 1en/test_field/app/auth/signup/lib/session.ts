@@ -19,13 +19,13 @@ export async function decrypt(session: string | undefined = '') {
     const { payload } = await jwtVerify(session, encodedKey, {
       algorithms: ['HS256'],
     })
-    return payload
+    return payload as { userId: number; }
   } catch (error) {
     console.log('Failed to verify session')
   }
 }
 
-export async function createSession(userId: string) {
+export async function createSession(userId: number) {
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
   const session = await encrypt({ userId, expiresAt })
   const cookieStore = await cookies()

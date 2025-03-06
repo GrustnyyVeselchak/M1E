@@ -47,7 +47,7 @@ export async function signup(state: FormState, formData: FormData) {
     }
 
     // 4. Create user session
-    await createSession(user.id.toString())
+    await createSession(user.id)
     
     } catch (error) {
     console.error('Error creating user:', error);
@@ -56,5 +56,5 @@ export async function signup(state: FormState, formData: FormData) {
     };
   }
   // 5. Redirect user
-  redirect('/')
+  redirect('/auth/signin')
 }

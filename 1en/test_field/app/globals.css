@@ -1,4 +1,4 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -12,12 +12,12 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   padding: 0;
   margin: 0;
-  color: var(--foreground);
-  background: var(--background);
+/*   color: var(--foreground);
+  background: var(--background); */
   min-height: 100vh;
 }

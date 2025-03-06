@@ -26,7 +26,7 @@ export type FormState =
   | undefined
 
 export interface SessionPayload {
-    userId: string;
+    userId: number;
     email?: string;
     role?: string;
     expiresAt: Date;
